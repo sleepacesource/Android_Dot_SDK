@@ -3,6 +3,16 @@ package com.sleepdotsdk.demo.fragment;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.sleepace.sdk.interfs.IConnectionStateCallback;
+import com.sleepace.sdk.interfs.IDeviceManager;
+import com.sleepace.sdk.interfs.IResultCallback;
+import com.sleepace.sdk.manager.CONNECTION_STATE;
+import com.sleepace.sdk.manager.CallbackData;
+import com.sleepace.sdk.manager.DeviceType;
+import com.sleepace.sdk.util.LogUtil;
+import com.sleepdotsdk.demo.MainActivity;
+import com.sleepdotsdk.demo.R;
+
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,16 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.sleepace.sdk.interfs.IConnectionStateCallback;
-import com.sleepace.sdk.interfs.IDataCallback;
-import com.sleepace.sdk.interfs.IDeviceManager;
-import com.sleepace.sdk.manager.CONNECTION_STATE;
-import com.sleepace.sdk.manager.CallbackData;
-import com.sleepace.sdk.manager.DeviceType;
-import com.sleepace.sdk.util.LogUtil;
-import com.sleepdotsdk.demo.MainActivity;
-import com.sleepdotsdk.demo.R;
 
 public class DeviceFragment extends BaseFragment {
 	private Button btnDeviceName, btnDeviceId, btnPower, btnVersion, btnUpgrade;
@@ -152,9 +152,9 @@ public class DeviceFragment extends BaseFragment {
 			btnUpgrade.setEnabled(false);
 			mActivity.showUpgradeDialog();
 			upgrading = true;
-			getSleepDotHelper().upgradeDevice(bean.crcDes, bean.crcBin, bean.is, new IDataCallback<Integer>() {
+			getSleepDotHelper().upgradeDevice(bean.crcDes, bean.crcBin, bean.is, new IResultCallback<Integer>() {
 				@Override
-				public void onDataCallback(final CallbackData<Integer> cd) {
+				public void onResultCallback(final CallbackData<Integer> cd) {
 					// TODO Auto-generated method stub
 					mActivity.runOnUiThread(new Runnable() {
 						@Override
@@ -192,9 +192,9 @@ public class DeviceFragment extends BaseFragment {
 			printLog(getString(R.string.get_device_id, mActivity.getDevice().getDeviceId()));
 		}else if(v == btnPower){
 			printLog(R.string.getting_power);
-			getSleepDotHelper().getBattery(1000, new IDataCallback<Byte>() {
+			getSleepDotHelper().getBattery(1000, new IResultCallback<Byte>() {
 				@Override
-				public void onDataCallback(final CallbackData<Byte> cd) {
+				public void onResultCallback(final CallbackData<Byte> cd) {
 					// TODO Auto-generated method stub
 					mActivity.runOnUiThread(new Runnable() {
 						@Override
@@ -212,9 +212,9 @@ public class DeviceFragment extends BaseFragment {
 			});
 		}else if(v == btnVersion){
 			printLog(R.string.getting_current_version);
-			getSleepDotHelper().getDeviceVersion(1000, new IDataCallback() {
+			getSleepDotHelper().getDeviceVersion(1000, new IResultCallback() {
 				@Override
-				public void onDataCallback(final CallbackData cd) {
+				public void onResultCallback(final CallbackData cd) {
 					// TODO Auto-generated method stub
 					mActivity.runOnUiThread(new Runnable() {
 						@Override

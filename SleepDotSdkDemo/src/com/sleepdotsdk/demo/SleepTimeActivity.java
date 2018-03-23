@@ -2,7 +2,7 @@ package com.sleepdotsdk.demo;
 
 import java.util.Calendar;
 
-import com.sleepace.sdk.interfs.IDataCallback;
+import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.sleepdot.SleepDotHelper;
 import com.sleepace.sdk.util.LogUtil;
@@ -179,9 +179,9 @@ public class SleepTimeActivity extends BaseActivity {
         	printLog(getString(R.string.writing_monitoring_period__device, String.format("%02d:%02d", sHour, sMinute), String.format("%02d:%02d", eHour, eMinute)));
         	
         	final int timeLength = (etime - stime) / 60;
-        	sleepDotHelper.setAutoCollection(sHour, sMinute, timeLength, 1000, new IDataCallback() {
+        	sleepDotHelper.setAutoCollection(sHour, sMinute, timeLength, 1000, new IResultCallback() {
 				@Override
-				public void onDataCallback(final CallbackData cd) {
+				public void onResultCallback(final CallbackData cd) {
 					// TODO Auto-generated method stub
 					LogUtil.log(TAG+" setAutoCollection hour:" + sHour+",minute:" + sMinute + ",duration:" + timeLength +"," + cd);
 					runOnUiThread(new Runnable() {

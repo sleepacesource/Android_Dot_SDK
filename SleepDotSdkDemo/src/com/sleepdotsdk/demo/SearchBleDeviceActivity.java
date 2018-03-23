@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sleepace.sdk.domain.BleDevice;
-import com.sleepace.sdk.manager.BleHelper;
+import com.sleepace.sdk.manager.ble.BleHelper;
 import com.sleepdotsdk.demo.util.BleDeviceNameUtil;
 
 import android.bluetooth.BluetoothAdapter;

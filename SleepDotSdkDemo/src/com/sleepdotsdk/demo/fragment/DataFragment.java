@@ -9,14 +9,16 @@ import java.util.Date;
 import java.util.List;
 
 import com.sleepace.sdk.core.sleepdot.domain.Analysis;
+import com.sleepace.sdk.core.sleepdot.domain.Detail;
 import com.sleepace.sdk.core.sleepdot.domain.HistoryData;
 import com.sleepace.sdk.core.sleepdot.domain.Summary;
+import com.sleepace.sdk.core.sleepdot.util.AnalysisUtil;
 import com.sleepace.sdk.core.sleepdot.util.SleepConfig;
-import com.sleepace.sdk.interfs.IDataCallback;
+import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.manager.DeviceType;
 import com.sleepace.sdk.util.LogUtil;
-import com.sleepace.sdk.util.TimeUtill;
+import com.sleepace.sdk.util.TimeUtil;
 import com.sleepdotsdk.demo.R;
 import com.sleepdotsdk.demo.bean.CvPoint;
 import com.sleepdotsdk.demo.util.DensityUtil;
@@ -103,9 +105,9 @@ public class DataFragment extends BaseFragment {
 			cal.set(Calendar.MINUTE, 0);
 			cal.set(Calendar.SECOND, 0);
 			int startTime = (int) (cal.getTimeInMillis() / 1000);//1505754919
-			getSleepDotHelper().historyDownload(0, endTime, new IDataCallback() {
+			getSleepDotHelper().historyDownload(0, endTime, new IResultCallback() {
 				@Override
-				public void onDataCallback(final CallbackData cd) {
+				public void onResultCallback(final CallbackData cd) {
 					// TODO Auto-generated method stub
 					mActivity.runOnUiThread(new Runnable() {
 						@Override
@@ -177,7 +179,7 @@ public class DataFragment extends BaseFragment {
 		main_graph.setVerticalLabels(
 				new String[] { "", getString(R.string.wake_), getString(R.string.light_), getString(R.string.mid_), getString(R.string.deep_), "" });
 
-		main_graph.setBeginAndOffset(historyData.getSummary().getStartTime(), TimeUtill.getTimeZone(), 0);
+		main_graph.setBeginAndOffset(historyData.getSummary().getStartTime(), TimeUtil.getTimeZoneHour(), 0);
 		main_graph.setScalable(false);
 		main_graph.setScrollable(false);
 		main_graph.setShowLegend(false);
@@ -337,6 +339,7 @@ public class DataFragment extends BaseFragment {
 		HistoryData historyData = new HistoryData();
 		Summary summ = new Summary();
 		summ.setStartTime(starttime);
+//		count = 750;
 		summ.setRecordCount(count);
 		historyData.setSummary(summ);
 
@@ -2599,8 +2602,9 @@ public class DataFragment extends BaseFragment {
 //		detail.setStatusFlag(statusFlag);
 //		historyData.setDetail(detail);
 //
-//		 Analysis analysis = AnalysisUtil.analysData(historyData);
-//		 LogUtil.log(TAG+" analysis:" + analysis);
+//		Analysis analysis = AnalysisUtil.analysData(historyData);
+//		LogUtil.log(TAG+" analysis:" + analysis);
+		 
 		Analysis analysis = new Analysis();
 		analysis.setMd_body_move_decrease_scale((short) 5);
 		analysis.setMd_sleep_time_decrease_scale((short) 1);
@@ -2676,6 +2680,7 @@ public class DataFragment extends BaseFragment {
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0,
 				0 });
+		
 		historyData.setAnaly(analysis);
 		return historyData;
 	}

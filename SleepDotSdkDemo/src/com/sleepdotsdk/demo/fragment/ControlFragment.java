@@ -1,9 +1,9 @@
 package com.sleepdotsdk.demo.fragment;
 
-import com.sleepace.sdk.interfs.IDataCallback;
+import com.sleepace.sdk.constant.StatusCode;
+import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.util.LogUtil;
-import com.sleepace.sdk.util.StatusCode;
 import com.sleepdotsdk.demo.MainActivity;
 import com.sleepdotsdk.demo.R;
 import com.sleepdotsdk.demo.SleepTimeActivity;
@@ -95,9 +95,9 @@ public class ControlFragment extends BaseFragment {
 			
 		}else if(v == btnCollectStatus){
 			printLog(R.string.getting_device_status);
-			getSleepDotHelper().getCollectionStatus(1000, new IDataCallback<Byte>() {
+			getSleepDotHelper().getCollectionStatus(1000, new IResultCallback<Byte>() {
 				@Override
-				public void onDataCallback(final CallbackData<Byte> cd) {
+				public void onResultCallback(final CallbackData<Byte> cd) {
 					// TODO Auto-generated method stub
 					mActivity.runOnUiThread(new Runnable() {
 						@Override
@@ -154,9 +154,9 @@ public class ControlFragment extends BaseFragment {
 			});
 		}*/else if(v == btnStopCollect){
 			printLog(R.string.notified_acquisition_off);
-			getSleepDotHelper().stopCollection(1000, new IDataCallback() {
+			getSleepDotHelper().stopCollection(1000, new IResultCallback() {
 				@Override
-				public void onDataCallback(final CallbackData cd) {
+				public void onResultCallback(final CallbackData cd) {
 					// TODO Auto-generated method stub
 					mActivity.runOnUiThread(new Runnable() {
 						@Override
