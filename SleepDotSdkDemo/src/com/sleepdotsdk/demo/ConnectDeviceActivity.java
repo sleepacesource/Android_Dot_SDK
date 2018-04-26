@@ -7,6 +7,7 @@ import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.manager.DeviceType;
 import com.sleepace.sdk.sleepdot.SleepDotHelper;
+import com.sleepace.sdk.util.LogUtil;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -128,7 +129,7 @@ public class ConnectDeviceActivity extends BaseActivity {
 					@Override
 					public void onResultCallback(final CallbackData<LoginBean> cd) {
 						// TODO Auto-generated method stub
-						
+						LogUtil.log(TAG+" login callback:" + cd);
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
