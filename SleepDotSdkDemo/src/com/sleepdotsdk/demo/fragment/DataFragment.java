@@ -116,10 +116,16 @@ public class DataFragment extends BaseFragment {
 							progressDialog.dismiss();
 							if (checkStatus(cd)) {
 								List<HistoryData> list = (List<HistoryData>) cd.getResult();
-								LogUtil.log(TAG+" download data before sort:" + list);
+//								LogUtil.log(TAG+" download data before sort:" + list);
 								if (list != null && list.size() > 0) {
 									Collections.sort(list, new HistoryDataComparator());
-									LogUtil.log(TAG+" download data after sort:" + list);
+//									LogUtil.log(TAG+" download data after sort:" + list);
+									for(HistoryData tmp : list) {
+										LogUtil.log(TAG+" download summary:" + tmp.getSummary());
+										LogUtil.log(TAG+" download detail:" + tmp.getDetail());
+										LogUtil.log(TAG+" download analysis:" + tmp.getAnaly());
+									}
+									
 									HistoryData historyData = list.get(0);
 									initReportView(historyData);
 								}else{
