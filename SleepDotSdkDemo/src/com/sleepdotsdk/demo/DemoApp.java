@@ -1,5 +1,7 @@
 package com.sleepdotsdk.demo;
 
+import com.sleepace.sdk.util.SdkLog;
+
 import android.app.Application;
 
 
@@ -17,6 +19,7 @@ public class DemoApp extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        SdkLog.setLogEnable(true);
     }
 
     @Override

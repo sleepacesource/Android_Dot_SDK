@@ -5,7 +5,7 @@ import java.util.Calendar;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.sleepdot.SleepDotHelper;
-import com.sleepace.sdk.util.LogUtil;
+import com.sleepace.sdk.util.SdkLog;
 import com.sleepace.sdk.util.StringUtil;
 import com.sleepdotsdk.demo.view.wheelview.NumericWheelAdapter;
 import com.sleepdotsdk.demo.view.wheelview.OnItemSelectedListener;
@@ -183,7 +183,7 @@ public class SleepTimeActivity extends BaseActivity {
 				@Override
 				public void onResultCallback(final CallbackData cd) {
 					// TODO Auto-generated method stub
-					LogUtil.log(TAG+" setAutoCollection hour:" + sHour+",minute:" + sMinute + ",duration:" + timeLength +"," + cd);
+					SdkLog.log(TAG+" setAutoCollection hour:" + sHour+",minute:" + sMinute + ",duration:" + timeLength +"," + cd);
 					runOnUiThread(new Runnable() {
 						@Override
 						public void run() {

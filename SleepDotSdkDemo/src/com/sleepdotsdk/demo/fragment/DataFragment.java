@@ -17,7 +17,7 @@ import com.sleepace.sdk.core.sleepdot.util.SleepConfig;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.manager.DeviceType;
-import com.sleepace.sdk.util.LogUtil;
+import com.sleepace.sdk.util.SdkLog;
 import com.sleepace.sdk.util.TimeUtil;
 import com.sleepdotsdk.demo.R;
 import com.sleepdotsdk.demo.bean.CvPoint;
@@ -55,7 +55,7 @@ public class DataFragment extends BaseFragment {
 		super.onCreateView(inflater, container, savedInstanceState);
 		this.inflater = inflater;
 		View view = inflater.inflate(R.layout.fragment_data, null);
-		LogUtil.log(TAG + " onCreateView-----------");
+		SdkLog.log(TAG + " onCreateView-----------");
 		findView(view);
 		initListener();
 		initUI();
@@ -116,14 +116,14 @@ public class DataFragment extends BaseFragment {
 							progressDialog.dismiss();
 							if (checkStatus(cd)) {
 								List<HistoryData> list = (List<HistoryData>) cd.getResult();
-//								LogUtil.log(TAG+" download data before sort:" + list);
+//								SdkLog.log(TAG+" download data before sort:" + list);
 								if (list != null && list.size() > 0) {
 									Collections.sort(list, new HistoryDataComparator());
-//									LogUtil.log(TAG+" download data after sort:" + list);
+//									SdkLog.log(TAG+" download data after sort:" + list);
 									for(HistoryData tmp : list) {
-										LogUtil.log(TAG+" download summary:" + tmp.getSummary());
-										LogUtil.log(TAG+" download detail:" + tmp.getDetail());
-										LogUtil.log(TAG+" download analysis:" + tmp.getAnaly());
+										SdkLog.log(TAG+" download summary:" + tmp.getSummary());
+										SdkLog.log(TAG+" download detail:" + tmp.getDetail());
+										SdkLog.log(TAG+" download analysis:" + tmp.getAnaly());
 									}
 									
 									HistoryData historyData = list.get(0);
@@ -2609,7 +2609,7 @@ public class DataFragment extends BaseFragment {
 //		historyData.setDetail(detail);
 //
 //		Analysis analysis = AnalysisUtil.analysData(historyData);
-//		LogUtil.log(TAG+" analysis:" + analysis);
+//		SdkLog.log(TAG+" analysis:" + analysis);
 		 
 		Analysis analysis = new Analysis();
 		analysis.setMd_body_move_decrease_scale((short) 5);

@@ -3,7 +3,7 @@ package com.sleepdotsdk.demo.fragment;
 import com.sleepace.sdk.constant.StatusCode;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
-import com.sleepace.sdk.util.LogUtil;
+import com.sleepace.sdk.util.SdkLog;
 import com.sleepdotsdk.demo.MainActivity;
 import com.sleepdotsdk.demo.R;
 import com.sleepdotsdk.demo.SleepTimeActivity;
@@ -25,7 +25,7 @@ public class ControlFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View view = inflater.inflate(R.layout.fragment_control, null);
-		LogUtil.log(TAG+" onCreateView-----------");
+		SdkLog.log(TAG+" onCreateView-----------");
 		findView(view);
 		initListener();
 		initUI();
@@ -71,7 +71,7 @@ public class ControlFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		super.onResume();
 		printLog(null);
-		LogUtil.log(TAG+" onResume collectStatus:" + MainActivity.collectStatus);
+		SdkLog.log(TAG+" onResume collectStatus:" + MainActivity.collectStatus);
 		if(MainActivity.collectStatus == 1){
 			tvCollectStatus.setText(R.string.working_state_ing);
 			btnStopCollect.setEnabled(true);
@@ -106,7 +106,7 @@ public class ControlFragment extends BaseFragment {
 							
 							if(checkStatus(cd)){
 								MainActivity.collectStatus = cd.getResult();
-								LogUtil.log(TAG+" getCollectionStatus collS:" + MainActivity.collectStatus);
+								SdkLog.log(TAG+" getCollectionStatus collS:" + MainActivity.collectStatus);
 								int textRes = MainActivity.collectStatus == 1 ? R.string.working_state_ing : R.string.working_state_not;
 								tvCollectStatus.setText(textRes);
 								String str = getString(R.string.get_working_status, getString(textRes));
@@ -118,7 +118,7 @@ public class ControlFragment extends BaseFragment {
 									btnStopCollect.setEnabled(false);
 								}
 							}else{
-								if(cd.getStatus() == StatusCode.STATUS_DISCONNECT){
+								if(cd.getStatus() == StatusCode.DISCONNECT){
 									tvCollectStatus.setText(R.string.working_state_no);
 								}
 							}

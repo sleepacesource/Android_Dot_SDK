@@ -9,7 +9,7 @@ import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CONNECTION_STATE;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.manager.DeviceType;
-import com.sleepace.sdk.util.LogUtil;
+import com.sleepace.sdk.util.SdkLog;
 import com.sleepdotsdk.demo.MainActivity;
 import com.sleepdotsdk.demo.R;
 
@@ -31,7 +31,7 @@ public class DeviceFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View root = inflater.inflate(R.layout.fragment_device, null);
-		LogUtil.log(TAG+" onCreateView-----------");
+		SdkLog.log(TAG+" onCreateView-----------");
 		findView(root);
 		initListener();
 		initUI();
