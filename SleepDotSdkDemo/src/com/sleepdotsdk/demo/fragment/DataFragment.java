@@ -3,6 +3,7 @@ package com.sleepdotsdk.demo.fragment;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -124,6 +125,9 @@ public class DataFragment extends BaseFragment {
 										SdkLog.log(TAG+" download summary:" + tmp.getSummary());
 										SdkLog.log(TAG+" download detail:" + tmp.getDetail());
 										SdkLog.log(TAG+" download analysis:" + tmp.getAnaly());
+										if(tmp.getAnaly() != null) {
+											SdkLog.log(TAG+" download analysis SleepCurveArray:" + Arrays.toString(tmp.getAnaly().getSleepCurveArray()));
+										}
 									}
 									
 									HistoryData historyData = list.get(0);
