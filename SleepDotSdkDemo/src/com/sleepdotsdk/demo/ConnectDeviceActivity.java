@@ -125,7 +125,7 @@ public class ConnectDeviceActivity extends BaseActivity {
         		//mSetting.edit().putString("uid", uid).commit();
             	
         		int userId = Integer.valueOf(uid);
-        		sleepDotHelper.login(device.getDeviceName(), device.getAddress(), deviceCode, userId, 10 * 1000, new IResultCallback<LoginBean>() {
+        		sleepDotHelper.login(device.getDeviceName(), device.getAddress(), deviceCode, userId, 30 * 1000, new IResultCallback<LoginBean>() {
 					@Override
 					public void onResultCallback(final CallbackData<LoginBean> cd) {
 						// TODO Auto-generated method stub

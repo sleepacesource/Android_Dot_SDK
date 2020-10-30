@@ -3,6 +3,7 @@ package com.sleepdotsdk.demo.fragment;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.sleepace.sdk.core.sleepdot.SleepDotPacket.SleepCfgRsp;
 import com.sleepace.sdk.interfs.IConnectionStateCallback;
 import com.sleepace.sdk.interfs.IDeviceManager;
 import com.sleepace.sdk.interfs.IResultCallback;
@@ -143,6 +144,18 @@ public class DeviceFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		super.onClick(v);
 		if(v == btnUpgrade){
+//			getSleepDotHelper().getAutoCollectionTime(3000, new IResultCallback() {
+//				@Override
+//				public void onResultCallback(CallbackData cd) {
+//					// TODO Auto-generated method stub
+//					if(cd.isSuccess()) {
+//						SleepCfgRsp rsp = (SleepCfgRsp) cd.getResult();
+//					}
+//				}
+//			});
+//			if(true) {
+//				return;
+//			}
 			
 			FirmwareBean bean = getFirmwareBean();
 			if(bean == null){
@@ -181,6 +194,15 @@ public class DeviceFragment extends BaseFragment {
 			});
 			
 		}else if(v == btnDeviceName){
+			
+//			getSleepDotHelper().setAutoCollection((byte)23, (byte)45, 450, 3000, new IResultCallback() {
+//				@Override
+//				public void onResultCallback(CallbackData cd) {
+//					// TODO Auto-generated method stub
+//					
+//				}
+//			});
+			
 			printLog(R.string.getting_device_name);
 			MainActivity.deviceName = mActivity.getDevice().getDeviceName();
 			tvDeviceName.setText(MainActivity.deviceName);
