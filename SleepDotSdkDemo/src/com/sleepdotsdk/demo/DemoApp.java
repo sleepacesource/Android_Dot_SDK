@@ -19,7 +19,11 @@ public class DemoApp extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        SdkLog.init(this);
         SdkLog.setLogEnable(true);
+        String logDir = getExternalFilesDir("log").getPath();
+        SdkLog.setLogDir(logDir);
+        SdkLog.setSaveLog(true, "log.txt");
     }
 
     @Override

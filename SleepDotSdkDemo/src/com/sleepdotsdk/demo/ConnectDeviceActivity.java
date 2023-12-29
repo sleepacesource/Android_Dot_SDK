@@ -1,12 +1,12 @@
 package com.sleepdotsdk.demo;
 
 import com.sleepace.sdk.constant.DeviceCode;
-import com.sleepace.sdk.core.sleepdot.domain.LoginBean;
 import com.sleepace.sdk.domain.BleDevice;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.manager.DeviceType;
 import com.sleepace.sdk.sleepdot.SleepDotHelper;
+import com.sleepace.sdk.sleepdot.domain.LoginBean;
 import com.sleepace.sdk.util.SdkLog;
 
 import android.app.AlertDialog;

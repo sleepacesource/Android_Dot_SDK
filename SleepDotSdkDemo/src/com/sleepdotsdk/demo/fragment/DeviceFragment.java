@@ -3,7 +3,6 @@ package com.sleepdotsdk.demo.fragment;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.sleepace.sdk.core.sleepdot.SleepDotPacket.SleepCfgRsp;
 import com.sleepace.sdk.interfs.IConnectionStateCallback;
 import com.sleepace.sdk.interfs.IDeviceManager;
 import com.sleepace.sdk.interfs.IResultCallback;

@@ -1,10 +1,12 @@
 package com.sleepdotsdk.demo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.sleepace.sdk.domain.BleDevice;
 import com.sleepace.sdk.manager.ble.BleHelper;
+import com.sleepace.sdk.util.SdkLog;
 import com.sleepdotsdk.demo.util.BleDeviceNameUtil;
 
 import android.bluetooth.BluetoothAdapter;
@@ -204,9 +206,13 @@ public class SearchBleDeviceActivity extends BaseActivity {
 		            String deviceName = BleDeviceNameUtil.getBleDeviceName(0xff, scanRecord);
 		            if(deviceName != null){
 		            	deviceName = deviceName.trim();
+		            	if(deviceName.length() > 13) {
+		            		deviceName = deviceName.substring(0, 13);
+		            	}
 		            }
 		            
-		            if(!TextUtils.isEmpty(modelName) && !TextUtils.isEmpty(deviceName)){
+		            SdkLog.log(TAG+" onLeScan modelName:" + modelName+",deviceName:" + deviceName+",scanRecord:" + Arrays.toString(scanRecord));
+		            if(!TextUtils.isEmpty(modelName) || !TextUtils.isEmpty(deviceName)){
 		            	BleDevice ble = new BleDevice();
 		            	ble.setModelName(modelName);
 		            	ble.setAddress(device.getAddress());

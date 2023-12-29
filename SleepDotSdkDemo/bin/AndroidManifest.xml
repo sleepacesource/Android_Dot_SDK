@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sleepdotsdk.demo"
-    android:versionCode="341"
-    android:versionName="3.4.1" >
+    android:versionCode="350"
+    android:versionName="3.5.0" >
 
     <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="19"
+        android:targetSdkVersion="28" />
     
     <uses-permission android:name="android.permission.BLUETOOTH"/>
 	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>

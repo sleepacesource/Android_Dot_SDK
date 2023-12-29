@@ -2,7 +2,7 @@ package com.sleepdotsdk.demo.util;
 
 import java.util.Comparator;
 
-import com.sleepace.sdk.core.sleepdot.domain.HistoryData;
+import com.sleepace.sdk.sleepdot.domain.HistoryData;
 
 public class HistoryDataComparator implements Comparator<HistoryData> {
 
